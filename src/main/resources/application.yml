@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    username: admin
+    password: cdnswe645
+    url: jdbc:mysql://database-swe645-hw3.ch2l0opuz5us.us-east-1.rds.amazonaws.com:3306/database1
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
