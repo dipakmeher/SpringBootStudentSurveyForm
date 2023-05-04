@@ -1,9 +1,9 @@
 pipeline {
    environment {
         registryCredential = 'docker'
-        DB_URL=credentials('DB_URL')
-        DB_PASSWORD=credentials('DB_PASSWORD')
-        DB_USER=credentials('DB_USER')
+        // DB_URL=credentials('DB_URL')
+        // DB_PASSWORD=credentials('DB_PASSWORD')
+        // DB_USER=credentials('DB_USER')
         TIMESTAMP = new Date().format("yyyyMMdd_HHmmss")
     }
    agent any
