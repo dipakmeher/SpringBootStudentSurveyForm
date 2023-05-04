@@ -1,6 +1,6 @@
 pipeline {
    environment {
-        registryCredential = 'dockerhub'
+        registryCredential = 'docker'
         DB_URL=credentials('DB_URL')
         DB_PASSWORD=credentials('DB_PASSWORD')
         DB_USER=credentials('DB_USER')
