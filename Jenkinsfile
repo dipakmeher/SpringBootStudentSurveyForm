@@ -9,48 +9,48 @@ pipeline {
    agent any
    tools {
     maven 'Maven 3.6.3'
-}
+    }
 
-   stages {
-    stage('Maven Clean') {
-            steps {
-               script{
-                sh 'mvn clean'
-               }
+    stages {
+        stage('Maven Clean') {
+                steps {
+                    script{
+                    sh 'mvn clean'
+                    }
+                }
             }
-        }
         stage('Maven Install') {
             steps {
-               script{
+                script{
                 sh 'mvn install'
             }
             }
         }
-      stage('Build Docker Image') {
-         steps {
+        stage('Build Docker Image') {
+            steps {
             script{
-               docker.withRegistry('',registryCredential){
-                  def customImage = docker.build("dipakmeher51/studentsurveysb:${env.TIMESTAMP}")
-               }
+                docker.withRegistry('',registryCredential){
+                    def customImage = docker.build("dipakmeher51/studentsurveysb:${env.TIMESTAMP}")
+                }
             }
-         }
-      }
+            }
+        }
 
-      stage('Push Image to Dockerhub') {
-         steps {
+        stage('Push Image to Dockerhub') {
+            steps {
             script{
-               docker.withRegistry('',registryCredential){
-                  sh "docker push dipakmeher51/studentsurveysb:${env.TIMESTAMP}"
-               }
+                docker.withRegistry('',registryCredential){
+                    sh "docker push dipakmeher51/studentsurveysb:${env.TIMESTAMP}"
+                }
             }
-         }
-      }
-      stage('Deploying to Rancher to single node(deployed in 3 replicas)') {
-         steps {
+            }
+        }
+        stage('Deploying to Rancher to single node(deployed in 3 replicas)') {
+            steps {
             script{
-               sh "kubectl set image deployment/hw3-deployment container-0=dipakmeher51/studentsurveysb:${env.TIMESTAMP} -n default"
+                sh "kubectl set image deployment/hw3-deployment container-0=dipakmeher51/studentsurveysb:${env.TIMESTAMP} -n default"
             }
-         }
-      }
-   }
+            }
+        }
+    }
 }
