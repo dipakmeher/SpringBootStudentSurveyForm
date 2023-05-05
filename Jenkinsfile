@@ -1,4 +1,4 @@
-// Added comment
+// added comments
 pipeline {
    environment {
         registryCredential = 'docker'
