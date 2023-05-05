@@ -24,8 +24,8 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	@Override
-	public StudentSurvey getById(Integer cid) {
-		Optional<StudentSurvey> findById = courseRepo.findById(cid);
+	public StudentSurvey getById(Integer id) {
+		Optional<StudentSurvey> findById = courseRepo.findById(id);
 
 		if (findById.isPresent()) {
 			return findById.get();
@@ -39,9 +39,9 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	@Override
-	public String deleteById(Integer cid) {
-		if (courseRepo.existsById(cid)) {
-			courseRepo.deleteById(cid);
+	public String deleteById(Integer id) {
+		if (courseRepo.existsById(id)) {
+			courseRepo.deleteById(id);
 			return "Delete Success";
 		} else {
 			return "No Record Found";

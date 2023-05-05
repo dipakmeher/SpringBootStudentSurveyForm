@@ -8,10 +8,10 @@ public interface SurveyService {
 
 	public String upsert(StudentSurvey course);
 
-	public StudentSurvey getById(Integer cid);
+	public StudentSurvey getById(Integer id);
 
 	public List<StudentSurvey> getAllSurveys();
 
-	public String deleteById(Integer cid);
+	public String deleteById(Integer id);
 
 }
